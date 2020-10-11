@@ -27,7 +27,13 @@ namespace GeonBit.UI
         Right,
 
         ///<summary>Middle mouse button (scrollwheel when clicked).</summary>
-        Middle
+        Middle,
+
+        /// <summary>XButton1, Extra Mappable Button</summary>
+        XButton1,
+
+        /// <summary>XButton2, Extra Mappable Button</summary>
+        XButton2
     };
 
     /// <summary>

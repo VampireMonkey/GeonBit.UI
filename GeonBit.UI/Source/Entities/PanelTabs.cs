@@ -231,7 +231,7 @@ namespace GeonBit.UI.Entities
         public TabData AddTab(string name, PanelSkin panelSkin = PanelSkin.None)
         {
             Panel newPanel = new Panel(Vector2.Zero, panelSkin, Anchor.TopCenter);
-            Button newButton = new Button(name, ButtonSkin.Default, Anchor.AutoInlineNoBreak, new Vector2(-1, -1));
+            Button newButton = new Button(name, Anchor.AutoInlineNoBreak, new Vector2(-1, -1));
             newPanel.Identifier = name;
             return AddTab(newPanel, newButton);
         }

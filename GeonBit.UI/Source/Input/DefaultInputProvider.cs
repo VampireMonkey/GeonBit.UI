@@ -505,7 +505,9 @@ namespace GeonBit.UI
         {
             return MouseButtonDown(MouseButton.Left) ||
                 MouseButtonDown(MouseButton.Right) ||
-                MouseButtonDown(MouseButton.Middle);
+                MouseButtonClick(MouseButton.Middle) ||
+                MouseButtonClick(MouseButton.XButton1) ||
+                MouseButtonClick(MouseButton.XButton2);
         }
 
         /// <summary>
@@ -526,7 +528,9 @@ namespace GeonBit.UI
         {
             return MouseButtonReleased(MouseButton.Left) ||
                 MouseButtonReleased(MouseButton.Right) ||
-                MouseButtonReleased(MouseButton.Middle);
+                MouseButtonClick(MouseButton.Middle) ||
+                MouseButtonClick(MouseButton.XButton1) ||
+                MouseButtonClick(MouseButton.XButton2);
         }
 
         /// <summary>
@@ -547,7 +551,9 @@ namespace GeonBit.UI
         {
             return MouseButtonPressed(MouseButton.Left) ||
                 MouseButtonPressed(MouseButton.Right) ||
-                MouseButtonPressed(MouseButton.Middle);
+                MouseButtonClick(MouseButton.Middle) ||
+                MouseButtonClick(MouseButton.XButton1) ||
+                MouseButtonClick(MouseButton.XButton2);
         }
 
         /// <summary>
@@ -569,7 +575,9 @@ namespace GeonBit.UI
             return
                 MouseButtonClick(MouseButton.Left) ||
                 MouseButtonClick(MouseButton.Right) ||
-                MouseButtonClick(MouseButton.Middle);
+                MouseButtonClick(MouseButton.Middle) ||
+                MouseButtonClick(MouseButton.XButton1) ||
+                MouseButtonClick(MouseButton.XButton2);
         }
 
         /// <summary>
@@ -587,6 +595,10 @@ namespace GeonBit.UI
                     return _newMouseState.RightButton;
                 case MouseButton.Middle:
                     return _newMouseState.MiddleButton;
+                case MouseButton.XButton1:
+                    return _newMouseState.XButton1;
+                case MouseButton.XButton2:
+                    return _newMouseState.XButton2;
             }
             return ButtonState.Released;
         }
@@ -606,6 +618,10 @@ namespace GeonBit.UI
                     return _oldMouseState.RightButton;
                 case MouseButton.Middle:
                     return _oldMouseState.MiddleButton;
+                case MouseButton.XButton1:
+                    return _oldMouseState.XButton1;
+                case MouseButton.XButton2:
+                    return _oldMouseState.XButton2;
             }
             return ButtonState.Released;
         }

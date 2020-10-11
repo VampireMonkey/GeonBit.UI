@@ -77,11 +77,11 @@ namespace GeonBit.UI.Entities
         /// Create the button.
         /// </summary>
         /// <param name="text">Text for the button label.</param>
-        /// <param name="skin">Button skin (texture to use).</param>
         /// <param name="anchor">Position anchor.</param>
         /// <param name="size">Button size (if not defined will use default size).</param>
         /// <param name="offset">Offset from anchor position.</param>
-        public Button(string text, ButtonSkin skin = ButtonSkin.Default, Anchor anchor = Anchor.Auto, Vector2? size = null, Vector2? offset = null) :
+        /// <param name="skin">Button skin (texture to use).</param>
+        public Button(string text = "", Anchor anchor = Anchor.Auto, Vector2? size = null, Vector2? offset = null, ButtonSkin skin = ButtonSkin.Default) :
             base(size, anchor, offset)
         {
             // store style
@@ -226,6 +226,15 @@ namespace GeonBit.UI.Entities
 
             // call base draw function
             base.DrawEntity(spriteBatch, phase);
+        }
+
+        /// <summary>
+        /// Button Text on its Paragraph
+        /// </summary>
+        public string Text
+        {
+            get { return ButtonParagraph.Text; }
+            set { ButtonParagraph.Text = value; }
         }
     }
 }

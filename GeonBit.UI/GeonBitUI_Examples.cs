@@ -112,18 +112,18 @@ namespace GeonBit.UI.Example
             UserInterface.Active.AddEntity(topPanel);
 
             // add previous example button
-            previousExampleButton = new Button("<- Back", ButtonSkin.Default, Anchor.Auto, new Vector2(300, topPanelHeight));
+            previousExampleButton = new Button("<- Back", Anchor.Auto, new Vector2(300, topPanelHeight));
             previousExampleButton.OnClick = (Entity btn) => { this.PreviousExample(); };
             topPanel.AddChild(previousExampleButton);
 
             // add next example button
-            nextExampleButton = new Button("Next ->", ButtonSkin.Default, Anchor.TopRight, new Vector2(300, topPanelHeight));
+            nextExampleButton = new Button("Next ->", Anchor.TopRight, new Vector2(300, topPanelHeight));
             nextExampleButton.OnClick = (Entity btn) => { this.NextExample(); };
             nextExampleButton.Identifier = "next_btn";
             topPanel.AddChild(nextExampleButton);
 
             // add show-get button
-            Button showGitButton = new Button("Git Repo", ButtonSkin.Fancy, Anchor.TopCenter, new Vector2(280, topPanelHeight));
+            Button showGitButton = new Button("Git Repo", Anchor.TopCenter, new Vector2(280, topPanelHeight), skin: ButtonSkin.Fancy);
             showGitButton.OnClick = (Entity btn) => { System.Diagnostics.Process.Start("https://github.com/RonenNess/GeonBit.UI"); };
             topPanel.AddChild(showGitButton);
 
@@ -240,7 +240,7 @@ namespace GeonBit.UI.Example
             UserInterface.Active.AddEntity(scaleShow);
 
             // init zoom-out button
-            Button zoomout = new Button(string.Empty, ButtonSkin.Default, Anchor.BottomLeft, new Vector2(70, 70));
+            Button zoomout = new Button(string.Empty, Anchor.BottomLeft, new Vector2(70, 70));
             Icon zoomoutIcon = new Icon(IconType.ZoomOut, Anchor.Center, 0.75f);
             zoomout.AddChild(zoomoutIcon, true);
             zoomout.OnClick = (Entity btn) => {
@@ -251,7 +251,7 @@ namespace GeonBit.UI.Example
             UserInterface.Active.AddEntity(zoomout);
 
             // init zoom-in button
-            Button zoomin = new Button(string.Empty, ButtonSkin.Default, Anchor.BottomLeft, new Vector2(70, 70), new Vector2(70, 0));
+            Button zoomin = new Button(string.Empty, Anchor.BottomLeft, new Vector2(70, 70), new Vector2(70, 0));
             Icon zoominIcon = new Icon(IconType.ZoomIn, Anchor.Center, 0.75f);
             zoomin.AddChild(zoominIcon, true);
             zoomin.OnClick = (Entity btn) => {
@@ -374,12 +374,12 @@ The most common anchors are 'Auto' and 'AutoInline', which will place entities o
                     panel.AddChild(new Paragraph("GeonBit.UI comes with 3 button skins:"));
 
                     // add default buttons
-                    panel.AddChild(new Button("Default", ButtonSkin.Default));
-                    panel.AddChild(new Button("Alternative", ButtonSkin.Alternative));
-                    panel.AddChild(new Button("Fancy", ButtonSkin.Fancy));
+                    panel.AddChild(new Button("Default", skin: ButtonSkin.Default));
+                    panel.AddChild(new Button("Alternative", skin: ButtonSkin.Alternative));
+                    panel.AddChild(new Button("Fancy", skin: ButtonSkin.Fancy));
 
                     // custom button
-                    Button custom = new Button("Custom Skin", ButtonSkin.Default, size: new Vector2(0, 80));
+                    Button custom = new Button("Custom Skin", size: new Vector2(0, 80));
                     custom.SetCustomSkin(
                         Content.Load<Texture2D>("example/btn_default"),
                         Content.Load<Texture2D>("example/btn_hover"),
@@ -391,7 +391,7 @@ The most common anchors are 'Auto' and 'AutoInline', which will place entities o
                     panel.AddChild(new HorizontalLine());
                     panel.AddChild(new LineSpace());
                     panel.AddChild(new Paragraph("Note: buttons can also work in toggle mode:"));
-                    Button btn = new Button("Toggle Me!", ButtonSkin.Default);
+                    Button btn = new Button("Toggle Me!", skin: ButtonSkin.Default);
                     btn.ToggleMode = true;
                     panel.AddChild(btn);
                 }
@@ -896,7 +896,7 @@ Maybe something interesting in tab3?"));
 
                     // button to create simple message box
                     {
-                        var btn = new Button("Show Simple Message", ButtonSkin.Default);
+                        var btn = new Button("Show Simple Message", skin: ButtonSkin.Default);
                         btn.OnClick += (Entities.Entity entity) =>
                         {
                             Utils.MessageBox.ShowMsgBox("Hello World!", "This is a simple message box. It doesn't say much, really.");
@@ -907,7 +907,7 @@ Maybe something interesting in tab3?"));
                     // button to create message box with custombuttons
                     panel.AddChild(new Paragraph("Or you can create custom message and buttons:"));
                     {
-                        var btn = new Button("Show Custom Message", ButtonSkin.Default);
+                        var btn = new Button("Show Custom Message", skin: ButtonSkin.Default);
                         btn.OnClick += (Entities.Entity entity) =>
                         {
                             Utils.MessageBox.ShowMsgBox("Custom Message!", "In this message there are two custom buttons.\n\nYou can set different actions per button. For example, click on 'Surprise' and see what happens!", new Utils.MessageBox.MsgBoxOption[] {
@@ -921,7 +921,7 @@ Maybe something interesting in tab3?"));
                     // button to create message with extras
                     panel.AddChild(new Paragraph("And you can also add extra entities to the message box:"));
                     {
-                        var btn = new Button("Message With Extras", ButtonSkin.Default);
+                        var btn = new Button("Message With Extras", skin: ButtonSkin.Default);
                         btn.OnClick += (Entity entity) =>
                         {
                             var textInput = new TextInput(false);
@@ -1092,7 +1092,7 @@ Maybe something interesting in tab3?"));
 
                     // default cursor show
                     {
-                        Button btn = new Button("Default", ButtonSkin.Default);
+                        Button btn = new Button("Default", skin: ButtonSkin.Default);
                         btn.OnMouseEnter = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Default); };
                         btn.OnMouseLeave = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Default); };
                         panel.AddChild(btn);
@@ -1100,7 +1100,7 @@ Maybe something interesting in tab3?"));
 
                     // pointer cursor show
                     {
-                        Button btn = new Button("Pointer", ButtonSkin.Default);
+                        Button btn = new Button("Pointer", skin: ButtonSkin.Default);
                         btn.OnMouseEnter = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Pointer); };
                         btn.OnMouseLeave = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Default); };
                         panel.AddChild(btn);
@@ -1108,7 +1108,7 @@ Maybe something interesting in tab3?"));
 
                     // ibeam cursor show
                     {
-                        Button btn = new Button("IBeam", ButtonSkin.Default);
+                        Button btn = new Button("IBeam", skin: ButtonSkin.Default);
                         btn.OnMouseEnter = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.IBeam); };
                         btn.OnMouseLeave = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Default); };
                         panel.AddChild(btn);
@@ -1116,7 +1116,7 @@ Maybe something interesting in tab3?"));
 
                     panel.AddChild(new Paragraph("And as always, you can also set your own custom cursor:"));
                     {
-                        Button btn = new Button("Custom", ButtonSkin.Default);
+                        Button btn = new Button("Custom", skin: ButtonSkin.Default);
                         btn.OnMouseEnter = (Entity entity) => { UserInterface.Active.SetCursor(Content.Load<Texture2D>("example/cursor"), 40); };
                         btn.OnMouseLeave = (Entity entity) => { UserInterface.Active.SetCursor(CursorType.Default); };
                         panel.AddChild(btn);
@@ -1284,7 +1284,7 @@ Click on 'Next' to see the character creation demo."));
                     panel.AddChild(new RadioButton("Female", Anchor.AutoInline, new Vector2(240, 60)));
 
                     // hardcore mode
-                    Button hardcore = new Button("Hardcore", ButtonSkin.Fancy, Anchor.AutoInline, new Vector2(220, 60));
+                    Button hardcore = new Button("Hardcore", Anchor.AutoInline, new Vector2(220, 60), skin: ButtonSkin.Fancy);
                     hardcore.ButtonParagraph.Scale = 0.8f;
                     hardcore.SpaceBefore = new Vector2(24, 0);
                     hardcore.ToggleMode = true;
